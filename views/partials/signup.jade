@@ -1,0 +1,28 @@
+.container
+    .col-sm-6.col-sm-offset-3
+        h1
+          span.fa.fa-sign-in
+          |  Signup
+        // LOGIN FORM
+        .form-group
+          label Email
+          |             
+          input.form-control(type='text', ng-model='form.email' name='email')
+        |         
+        .form-group
+          label Password
+          |             
+          input.form-control(type='password', ng-model='form.password' name='password')
+          |         
+          button(ng-click='addUser()').btn.btn-warning.btn-lg Signup
+        |     
+        hr
+        |     
+        p
+          | Already have an account? 
+          a(href='/login') Login
+        |     
+        p
+          | Or go 
+          a(href='/marketPlace') Market Place
+          | .

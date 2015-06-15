@@ -9,49 +9,45 @@ function IndexCtrl($scope, $http) {
     });
 }
 
-function AddPostCtrl($scope, $http, $location) {
+function UserCtrl($scope, $http, $location) {
   $scope.form = {};
-  $scope.submitPost = function () {
-    $http.post('/api/post', $scope.form).
+  $scope.addUser = function () {
+    $http.post('/api/user', $scope.form).
       success(function(data) {
-        $location.path('/');
+        $location.path('/shops/' + 1);//data.id);
       });
   };
 }
 
-function ReadPostCtrl($scope, $http, $routeParams) {
-  $http.get('/api/post/' + $routeParams.id).
-    success(function(data) {
-      $scope.post = data.post;
-    });
-}
-
-function EditPostCtrl($scope, $http, $location, $routeParams) {
+function MarketPlaceCtrl($scope, $http, $location) {
   $scope.form = {};
-  $http.get('/api/post/' + $routeParams.id).
+  $http.get('/api/shops').
     success(function(data) {
-      $scope.form = data.post;
+      $scope.shops = data.posts;
     });
 
-  $scope.editPost = function () {
-    $http.put('/api/post/' + $routeParams.id, $scope.form).
-      success(function(data) {
-        $location.url('/readPost/' + $routeParams.id);
-      });
+  $scope.getShop = function () {
+    $location.url('/marketPlace/' + $routeParams.id);
   };
 }
 
-function DeletePostCtrl($scope, $http, $location, $routeParams) {
-  $http.get('/api/post/' + $routeParams.id).
+function ShopCtrl($scope, $http, $routeParams) {
+  $http.get('/api/shops/' + $routeParams.id).
     success(function(data) {
-      $scope.post = data.post;
+      $scope.shop = data.post;
     });
+}
 
-  $scope.deletePost = function () {
-    $http.delete('/api/post/' + $routeParams.id).
-      success(function(data) {
-        $location.url('/');
-      });
+function UserShopsCtrl($scope, $http, $location, $routeParams) {
+  $scope.form = {};
+  $scope.user_id = 1;//$routeParams.id;
+  $http.get('/api/shops/' + $routeParams.id).
+  success(function(data) {
+    $scope.shops = data;
+  });
+
+  $scope.getShop = function () {
+    $location.url('/shops/' + $routeParams.id);
   };
 
   $scope.home = function () {

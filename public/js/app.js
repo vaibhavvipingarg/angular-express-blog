@@ -1,28 +1,32 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives']).
+angular.module('myApp', []).
   config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider.
       when('/', {
         templateUrl: 'partials/index',
         controller: IndexCtrl
       }).
-      when('/addPost', {
-        templateUrl: 'partials/addPost',
-        controller: AddPostCtrl
+      when('/login', {
+        templateUrl: 'partials/login',
+        controller: UserCtrl
       }).
-      when('/readPost/:id', {
-        templateUrl: 'partials/readPost',
-        controller: ReadPostCtrl
+      when('/signup', {
+        templateUrl: 'partials/signup',
+        controller: UserCtrl
       }).
-      when('/editPost/:id', {
-        templateUrl: 'partials/editPost',
-        controller: EditPostCtrl
+      when('/marketPlace', {
+        templateUrl: 'partials/marketPlace',
+        controller: MarketPlaceCtrl
       }).
-      when('/deletePost/:id', {
-        templateUrl: 'partials/deletePost',
-        controller: DeletePostCtrl
+      when('/marketPlace/:id', {
+        templateUrl: 'partials/shop',
+        controller: ShopCtrl
+      }).
+      when('/shops/:id', {
+        templateUrl: 'partials/userShops',
+        controller: UserShopsCtrl
       }).
       otherwise({
         redirectTo: '/'

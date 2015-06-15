@@ -5,7 +5,7 @@
 // For a real app, you'd make database requests here.
 // For this example, "data" acts like an in-memory "database"
 var data = {
-  "posts": [
+  "shops": [
     {
       "title": "Lorem ipsum",
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -14,14 +14,15 @@ var data = {
       "title": "Sed egestas",
       "text": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus."
     }
-  ]
+  ],
+  "users":[]
 };
 
 // GET
 
-exports.posts = function (req, res) {
+exports.shops = function (req, res) {
   var posts = [];
-  data.posts.forEach(function (post, i) {
+  data.shops.forEach(function (post, i) {
     posts.push({
       id: i,
       title: post.title,
@@ -33,11 +34,11 @@ exports.posts = function (req, res) {
   });
 };
 
-exports.post = function (req, res) {
+exports.shop = function (req, res) {
   var id = req.params.id;
-  if (id >= 0 && id < data.posts.length) {
+  if (id >= 0 && id < data.shops.length) {
     res.json({
-      post: data.posts[id]
+      post: data.shops[id]
     });
   } else {
     res.json(false);
@@ -46,8 +47,15 @@ exports.post = function (req, res) {
 
 // POST
 
-exports.addPost = function (req, res) {
-  data.posts.push(req.body);
+exports.addShop = function (req, res) {
+  data.shops.push(req.body);
+  res.json(req.body);
+};
+
+// POST
+
+exports.addUser = function (req, res) {
+  data.users.push(req.body);
   res.json(req.body);
 };
 
@@ -56,8 +64,8 @@ exports.addPost = function (req, res) {
 exports.editPost = function (req, res) {
   var id = req.params.id;
 
-  if (id >= 0 && id < data.posts.length) {
-    data.posts[id] = req.body;
+  if (id >= 0 && id < data.shops.length) {
+    data.shops[id] = req.body;
     res.json(true);
   } else {
     res.json(false);
@@ -69,8 +77,8 @@ exports.editPost = function (req, res) {
 exports.deletePost = function (req, res) {
   var id = req.params.id;
 
-  if (id >= 0 && id < data.posts.length) {
-    data.posts.splice(id, 1);
+  if (id >= 0 && id < data.shops.length) {
+    data.shops.splice(id, 1);
     res.json(true);
   } else {
     res.json(false);

@@ -1,0 +1,9 @@
+p There are {{shops.length}} shops
+div(ng-repeat='shop in shops')
+  h3 {{shop.title}}
+  div {{shop.text}}
+  a(href='/marketPlace/{{shop.id}}') More
+  |  - 
+  a(href='/marketPlace/{{shop.id}}') Edit
+  |  - 
+  a(href='/marketPlace/{{shop.id}}') Delete

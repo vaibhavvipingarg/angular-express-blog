@@ -1,19 +1,27 @@
 extends layout
 
 block body
-  div
-    h2 My Blog
-    ul
-      li
-        a(href='/') Home
-      li
-        a(href='/addPost') Add a new post
+  div.container
+    div.jumbotron.text-center
+        h1
+          span.fa.fa-lock Node Authentication
+
+        p Login or Register with:
+
+        a(href='/login').btn.btn-default
+          span.fa.fa-user Login
+        a(href='/signup').btn.btn-default
+          span.fa.fa-user Signup
+        a(href='/marketPlace').btn.btn-default
+          span.fa.fa-user Market Place
+
+    div.text-center
+        a(href='/marketPlace') Goto MarketPlace
 
     div(ng-view)
 
   script(src='js/lib/angular/angular.js')
   script(src='js/app.js')
-  script(src='js/services.js')
   script(src='js/controllers.js')
-  script(src='js/filters.js')
-  script(src='js/directives.js')
+
+
