@@ -7,3 +7,17 @@ div(ng-repeat='shop in shops')
   a(href='/marketPlace/{{shop._id}}') Edit
   |  - 
   a(href='/marketPlace/{{shop._id}}') Delete
+div
+    .container
+      .col-sm-6.col-sm-offset-3
+        h1
+          span.fa.fa-sign-in
+          |  Add Shop
+          .form-group
+            label Name
+            |             
+          input.form-control(type='text', ng-model='form.name' name='name')
+          |         
+          button(ng-click='addShop()').btn.btn-warning.btn-lg Add Shop
+        |     
+        hr

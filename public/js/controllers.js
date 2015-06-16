@@ -53,11 +53,21 @@ function ShopCtrl($scope, $http, $routeParams) {
 
 function UserShopsCtrl($scope, $http, $location, $routeParams) {
   $scope.form = {};
-  $scope.user_id = 1;//$routeParams.id;
-  $http.get(baseUrl + 'shops/' + $routeParams.id).
+  $http.get(baseUrl + 'user/shops/' + $routeParams.id).
   success(function(data) {
     $scope.shops = data;
   });
+
+  $scope.addShop = function () {
+    $scope.form.owner_id = $routeParams.id;
+    $http.post(baseUrl + 'shops', $scope.form).
+      success(function(data) {
+       $http.get(baseUrl + 'shops/user/' + data.owner_id).
+        success(function(data) {
+          $scope.shops = data;
+        });
+    });
+  };
 
   $scope.getShop = function () {
     $location.url('/shops/' + $routeParams.id);
