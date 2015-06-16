@@ -1,29 +1,30 @@
 'use strict';
 
 /* Controllers */
+var baseUrl = "http://localhost:8081/";
 
 function IndexCtrl($scope, $http) {
-  $http.get('/api/posts').
+  $http.get(baseUrl + 'posts').
     success(function(data, status, headers, config) {
-      $scope.posts = data.posts;
+      $scope.posts = data;
     });
 }
 
 function UserCtrl($scope, $http, $location) {
   $scope.form = {};
   $scope.addUser = function () {
-    $http.post('/api/user', $scope.form).
+    $http.post(baseUrl + 'user', $scope.form).
       success(function(data) {
-        $location.path('/shops/' + 1);//data.id);
+        $location.path('/shops/' + data._id);//data.id);
       });
   };
 }
 
 function MarketPlaceCtrl($scope, $http, $location) {
   $scope.form = {};
-  $http.get('/api/shops').
+  $http.get(baseUrl + '/shops').
     success(function(data) {
-      $scope.shops = data.posts;
+      $scope.shops = data;
     });
 
   $scope.getShop = function () {
@@ -32,7 +33,7 @@ function MarketPlaceCtrl($scope, $http, $location) {
 }
 
 function ShopCtrl($scope, $http, $routeParams) {
-  $http.get('/api/shops/' + $routeParams.id).
+  $http.get(baseUrl + 'shops/' + $routeParams.id).
     success(function(data) {
       $scope.shop = data.post;
     });
@@ -41,7 +42,7 @@ function ShopCtrl($scope, $http, $routeParams) {
 function UserShopsCtrl($scope, $http, $location, $routeParams) {
   $scope.form = {};
   $scope.user_id = 1;//$routeParams.id;
-  $http.get('/api/shops/' + $routeParams.id).
+  $http.get(baseUrl + 'shops/' + $routeParams.id).
   success(function(data) {
     $scope.shops = data;
   });
