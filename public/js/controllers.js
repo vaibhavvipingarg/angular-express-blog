@@ -4,7 +4,7 @@
 var baseUrl = "http://localhost:8081/";
 
 function IndexCtrl($scope, $http) {
-  $http.get(baseUrl + 'posts').
+  $http.get(baseUrl + 'shops').
     success(function(data, status, headers, config) {
       $scope.posts = data;
     });
@@ -15,14 +15,26 @@ function UserCtrl($scope, $http, $location) {
   $scope.addUser = function () {
     $http.post(baseUrl + 'user', $scope.form).
       success(function(data) {
-        $location.path('/shops/' + data._id);//data.id);
+        $location.path('shops/' + data._id);//data.id);
       });
   };
-}
+
+  $scope.getUser = function () {
+    $http({
+      url: baseUrl + 'user',
+      method: 'GET',
+      params: {
+        email: $scope.form.email,
+        password: $scope.form.password
+      }}).success(function(data) {
+        $location.path('shops/' + data._id);//data.id);
+      });
+    };
+  }
 
 function MarketPlaceCtrl($scope, $http, $location) {
   $scope.form = {};
-  $http.get(baseUrl + '/shops').
+  $http.get(baseUrl + 'shops').
     success(function(data) {
       $scope.shops = data;
     });
