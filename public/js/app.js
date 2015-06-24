@@ -12,6 +12,10 @@ angular.module('myApp', []).
         templateUrl: 'partials/login',
         controller: UserCtrl
       }).
+      when('/logout', {
+        templateUrl: 'partials/index',
+        controller: LogoutCtrl
+      }).
       when('/signup', {
         templateUrl: 'partials/signup',
         controller: UserCtrl

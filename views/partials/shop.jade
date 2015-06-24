@@ -1,3 +1,25 @@
-section
+div
   h3 {{shop.name}}
-  div {{shop.owner}}
+  div {{shop.owner_id}}
+  div.review-group
+    div.review-list
+      h3 Reviews:
+      div(ng-repeat='review in shop.reviews')
+        h3 {{review.rating}}
+        h4 {{review.text}}
+    div.review-new
+      h1
+        span.fa.fa-sign-in
+        |  Add Shop Review
+        .form-group
+          label Name
+          input.form-control(type='text', ng-model='form.review' review='review')
+          label Rating
+          input.form-control(type='text', ng-model='form.rating' rating='rating')
+        |         
+        button(ng-click='addReview()').btn.btn-warning.btn-lg Add Review
+      |     
+      hr
+
+
+

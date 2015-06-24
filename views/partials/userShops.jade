@@ -1,12 +1,4 @@
 p There are {{shops.length}} shops
-div(ng-repeat='shop in shops')
-  h3 {{shop.name}}
-  div {{shop.owner}}
-  a(href='/marketPlace/{{shop._id}}') More
-  |  - 
-  a(href='/marketPlace/{{shop._id}}') Edit
-  |  - 
-  a(href='/marketPlace/{{shop._id}}') Delete
 div
     .container
       .col-sm-6.col-sm-offset-3
@@ -21,3 +13,13 @@ div
           button(ng-click='addShop()').btn.btn-warning.btn-lg Add Shop
         |     
         hr
+div(ng-repeat='shop in shops')
+  h3 {{shop.name}}
+  div {{shop.owner_id}}
+  a(href='/marketPlace/{{shop._id}}') More
+  |  - 
+  a(href='/marketPlace/{{shop._id}}') Edit
+  |  - 
+  a(href='/marketPlace/{{shop._id}}') Delete
+
+  

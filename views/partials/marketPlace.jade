@@ -1,9 +1,4 @@
 p There are {{shops.length}} shops
-div(ng-repeat='shop in shops')
+div(ng-repeat='shop in shops', ng-click='getShop(shop._id)')
   h3 {{shop.name}}
-  div {{shop.owner}}
-  a(href='/marketPlace/{{shop._id}}') More
-  |  - 
-  a(href='/marketPlace/{{shop._id}}') Edit
-  |  - 
-  a(href='/marketPlace/{{shop._id}}') Delete
+  div{{shop.owner_id}}

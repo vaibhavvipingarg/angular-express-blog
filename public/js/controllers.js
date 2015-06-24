@@ -3,11 +3,28 @@
 /* Controllers */
 var baseUrl = "http://localhost:8081/";
 
+function LogoutCtrl($scope, $http, $location) {
+  $http.get(baseUrl + 'logout').success(function(err){
+    console.log(err);
+    //Redirect to the homepage
+    $location.path('/');
+  });
+}
+
 function IndexCtrl($scope, $http) {
   $http.get(baseUrl + 'shops').
     success(function(data, status, headers, config) {
       $scope.posts = data;
     });
+
+    $scope.logout = function() {
+      $http.post(baseUrl + 'logout').
+        success(function(err){
+          console.log(err);
+          //Redirect to the homepage
+          $location.path('/');
+        });
+    };
 }
 
 function UserCtrl($scope, $http, $location) {
@@ -39,23 +56,40 @@ function MarketPlaceCtrl($scope, $http, $location) {
       $scope.shops = data;
     });
 
-  $scope.getShop = function () {
-    $location.url('/marketPlace/' + $routeParams.id);
+  $scope.getShop = function (shid) {
+    $location.url('/marketPlace/' + shid);
   };
 }
 
 function ShopCtrl($scope, $http, $routeParams) {
-  $http.get(baseUrl + 'shops/' + $routeParams.id).
-    success(function(data) {
-      $scope.shop = data.post;
+    $http.get(baseUrl + 'shops/' + $routeParams.id).
+      success(function(data) {
+        $scope.shop = data;
+      });
+
+  $scope.addReview = function () {
+    $scope.form.shop_id = $routeParams.id;
+    $http.post(baseUrl + 'shops/' + $scope.form.shop_id + '/review' , $scope.form).
+      success(function(data) {
+          // Load the shop data
+    $http.get(baseUrl + 'shops/' + $routeParams.id).
+      success(function(data) {
+        $scope.shop = data;
+      });
     });
+  };
 }
 
 function UserShopsCtrl($scope, $http, $location, $routeParams) {
   $scope.form = {};
-  $http.get(baseUrl + 'user/shops/' + $routeParams.id).
-  success(function(data) {
-    $scope.shops = data;
+  $http.get(baseUrl + 'shops/user/' + $routeParams.id).
+  success(function(res) {
+    if (res.status == 403) {
+      //Redirect to the homepage
+      $location.url('/');
+    } if (res.status == 200) {
+      $scope.shops = res.data;      
+    }
   });
 
   $scope.addShop = function () {
