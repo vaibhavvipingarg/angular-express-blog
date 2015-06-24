@@ -1,8 +1,14 @@
-p There are {{shops.length}} shops
-form.form-inline
-  input(ng-model='query' type='text' placeholder='Search for item or shop' autofocus).market-search
-div(ng-repeat='shop in shops | filter:query', ng-click='getShop(shop._id)').shop
-  .shop-image
-  .shop-details
-    h4 {{shop.name}}
-    h5 {{shop.owner_id}}
+.marketPlace
+  p There are {{shops.length}} shops
+  form.form-inline
+    input(ng-model='query' type='text' placeholder='Search for item or shop' autofocus).market-search
+    div(ng-click='submitSearch()') Go
+    div(ng-show='results.length > 0').search-results
+      div(ng-repeat='result in results').shop
+        h4 {{result.name}}
+
+  div(ng-repeat='shop in shops | filter:query', ng-click='getShop(shop._id)').shop
+    .shop-image
+    .shop-details
+      h4 {{shop.name}}
+      h5 {{shop.owner_id}}

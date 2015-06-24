@@ -7,8 +7,15 @@ block body
           h1
             a(href='/')
               span.fa.fa-lock eBazaar
-        .banner-search
+        .banner-search(ng-controller='IndexCtrl')
+          input(ng-model='query' type='text' placeholder='Search for item or shop' autofocus).market-search
+          div(ng-click='submitSearch()') Go
+          div(ng-show='results.length > 0').search-results
+            div(ng-repeat='result in results' ng-click='getProduct(result._id)')
+              h4 {{result.name}}   
         .banner-actions
+          a(href='/addShop').btn.btn-default
+            span.fa.fa-user Add Shop
           a(href='/login').btn.btn-default
             span.fa.fa-user Login
           a(href='/signup').btn.btn-default

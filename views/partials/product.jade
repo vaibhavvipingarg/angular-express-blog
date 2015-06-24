@@ -1,0 +1,12 @@
+.container-fluid
+  .row
+    .col-xs-6.col-md-4
+      .panel.user-info
+        .shop-main.text-center
+        h3 {{product.name}}
+      .panel.reviews 
+        h3 Reviews:
+          div(ng-repeat='review in product.reviews')
+            h3 {{review.rating}}
+            h4 {{review.text}}
+    .col-xs-6.col-md-8.panel

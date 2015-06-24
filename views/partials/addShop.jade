@@ -1,13 +1,6 @@
-.section
-  .container-fluid
-    .row.newShop-details
-    .row.newShop-form
-      .product-list(ng-repeat='shop in shops' ng-click='editShop()')
-        h3 {{shop.name}}
-        div {{shop.owner_id}}
-
-p There are {{shops.length}} shops
-div
+.container-fluid
+  .row.newShop-details
+  .row.newShop-form
     .container
       .col-sm-6.col-sm-offset-3
         h1
@@ -21,6 +14,3 @@ div
           button(ng-click='addShop()').btn.btn-warning.btn-lg Add Shop
         |     
         hr
-
-
-  

@@ -49,8 +49,44 @@ body {
   top: 18px;
   margin-right: 10px;
 }
-.wrapper {
+.marketPlace
+{
   background-color: white;
+}
+.wrapper {
+}
+.newShop-details{
+  height: 100px;
+  background-color: white;
+  margin-top: 10px;
+}
+
+.newShop-form {
+  background-color: white;
+  margin-top: 10px;
+  height: 500px;
+}
+
+.search-results{
+  height: 200px;
+  width: 300px;
+  background-color: white;
+  border: 1px solid #E4E4E1;
+  border-bottom-color: #e2e2e2;
+  border-radius: 2px;
+}
+
+.panel {
+  background-color: white;
+  border: 1px solid #E4E4E1;
+  border-bottom-color: #e2e2e2;
+  border-radius: 2px;
+}
+.panel.reviews {
+  margin-top: 20px;
+}
+.panel.user-info{
+
 }
 
 .market-search{

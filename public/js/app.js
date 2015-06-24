@@ -8,6 +8,13 @@ angular.module('myApp', []).
         templateUrl: 'partials/index',
         controller: IndexCtrl
       }).
+      when('/addShop', {
+        redirectTo: '/signup'
+      }).
+      when('/addShop/:id', {
+        templateUrl: 'partials/addShop',
+        controller: AddShopCtrl
+      }).
       when('/login', {
         templateUrl: 'partials/login',
         controller: UserCtrl
@@ -27,6 +34,10 @@ angular.module('myApp', []).
       when('/marketPlace/:id', {
         templateUrl: 'partials/shop',
         controller: ShopCtrl
+      }).
+      when('/marketPlace/products/:product_id', {
+        templateUrl: 'partials/product',
+        controller: ProductCtrl
       }).
       when('/shops/:id', {
         templateUrl: 'partials/userShops',
