@@ -67,6 +67,18 @@ function ShopCtrl($scope, $http, $routeParams) {
         $scope.shop = data;
       });
 
+  $scope.addProduct = function () {
+    $scope.form.shop_id = $routeParams.id;
+    $http.post(baseUrl + 'shops/' + $scope.form.shop_id + '/products' , $scope.form).
+      success(function(data) {
+          // Load the shop data
+    $http.get(baseUrl + 'shops/' + $routeParams.id).
+      success(function(data) {
+        $scope.shop = data;
+      });
+    });
+  };
+
   $scope.addReview = function () {
     $scope.form.shop_id = $routeParams.id;
     $http.post(baseUrl + 'shops/' + $scope.form.shop_id + '/review' , $scope.form).

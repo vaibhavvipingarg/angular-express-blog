@@ -1,4 +1,8 @@
 p There are {{shops.length}} shops
-div(ng-repeat='shop in shops', ng-click='getShop(shop._id)')
-  h3 {{shop.name}}
-  div{{shop.owner_id}}
+form.form-inline
+  input(ng-model='query' type='text' placeholder='Search for item or shop' autofocus).market-search
+div(ng-repeat='shop in shops | filter:query', ng-click='getShop(shop._id)').shop
+  .shop-image
+  .shop-details
+    h4 {{shop.name}}
+    h5 {{shop.owner_id}}

@@ -1,5 +1,7 @@
 /* app css stylesheet */
-
+body {
+    background-color: rgb(245, 245, 241);
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -27,6 +29,92 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+.banner {
+  display: block;
+  background-color: white;
+}
+
+.banner-icon{
+  display: inline-block;
+  margin-left: 10px;
+}
+.banner-search{
+  display: inline-block;
+}
+.banner-actions{
+  float: right;
+  display: inline-block;
+  position: relative;
+  top: 18px;
+  margin-right: 10px;
+}
+.wrapper {
+  background-color: white;
+}
+
+.market-search{
+  width: 300px;
+  margin-left: 40px;
+}
+
+.shop {
+  width: 128px;
+  margin: 20px 40px;
+  display: inline-table;
+  border: 1px solid #E4E4E1;
+  border-bottom-color: #e2e2e2;
+  border-radius: 3px;
+  padding: 35px;
+  background-color: rgb(245, 245, 241);
+}
+
+.shop-page {
+}
+
+.shop-info {
+  display: inline-block;
+  position: relative;
+  background-color: white;
+}
+.shop-products {
+  margin-left: 20px;
+  display: inline-block;
+  position: relative;
+  width: calc(100% - 300px);
+}
+.product-list {
+  width: 128px;
+  margin: 20px 40px;
+  display: inline-table;
+  border: 1px solid #E4E4E1;
+  border-bottom-color: #e2e2e2;
+  border-radius: 3px;
+  padding: 35px;
+  background-color: rgb(245, 245, 241);
+}
+
+.shop-main {
+  background-image:url(images/store-sign_256.png);
+  height: 256px;
+  width: 256px;
+}
+
+.shop:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.shop-image{
+  background-image:url(images/store-sign.png);
+  height: 128px;
+  width: 128px;
+}
+
+.shop-details {
+  left: -20px;
+  position: relative;
+  top: 20px;
 }
 
 .review-list {

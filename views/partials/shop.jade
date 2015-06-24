@@ -1,6 +1,24 @@
 div
-  h3 {{shop.name}}
-  div {{shop.owner_id}}
+  .shop-page
+    .shop-info
+      .shop-main
+        h3 {{shop.name}}
+        div {{shop.owner_id}}
+    .shop-products
+        div(ng-repeat='product in shop.products').product-list
+          h3 {{product.name}}
+
+    div.product-new
+          h1
+            span.fa.fa-sign-in
+            |  Add Product
+            .form-group
+              label Name
+              input.form-control(type='text', ng-model='form.name' name='name')
+            |         
+            button(ng-click='addProduct()').btn.btn-warning.btn-lg Add Product
+          |     
+          hr
   div.review-group
     div.review-list
       h3 Reviews:

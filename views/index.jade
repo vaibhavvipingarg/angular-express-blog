@@ -2,25 +2,26 @@ extends layout
 
 block body
   div.container
-    div.jumbotron.text-center
-        h1
-          span.fa.fa-lock eBazaar
-
-        p Login or Register with:
-
-        a(href='/login').btn.btn-default
-          span.fa.fa-user Login
-        a(href='/signup').btn.btn-default
-          span.fa.fa-user Signup
-        a(href='/marketPlace').btn.btn-default
-          span.fa.fa-user Market Place
-        a(href='/logout').btn.btn-default
-          span.fa.fa-user Logout
+    div.banner
+        .banner-icon
+          h1
+            a(href='/')
+              span.fa.fa-lock eBazaar
+        .banner-search
+        .banner-actions
+          a(href='/login').btn.btn-default
+            span.fa.fa-user Login
+          a(href='/signup').btn.btn-default
+            span.fa.fa-user Signup
+          a(href='/marketPlace').btn.btn-default
+            span.fa.fa-user Market Place
+          a(href='/logout').btn.btn-default
+            span.fa.fa-user Logout
 
     div.text-center
         a(href='/marketPlace') Goto MarketPlace
 
-    div(ng-view)
+    div(ng-view).wrapper
 
   script(src='js/lib/angular/angular.js')
   script(src='js/app.js')
